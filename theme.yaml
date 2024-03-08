@@ -1,0 +1,16 @@
+name: My Hugo Creative Portfolio Theme
+license: MIT
+licenselink: https://github.com/vaibhav276/my-hugo-creative-portfolio-theme/LICENSE
+description: My personal theme for my hugo based portfolio website
+homepage: https://github.com/vaibhav276/my-hugo-creative-portfolio-theme
+demosite: https://vaibhav276.github.io/portfolio
+tags:
+  - posts
+features:
+  - some
+  - awesome
+  - features
+original:
+  author: Vaibhav Pujari
+  homepage: https://vaibhav276.github.io
+  repo: https://github.com/vaibhav276/my-hugo-creative-portfolio-theme

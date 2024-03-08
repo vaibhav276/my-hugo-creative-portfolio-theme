@@ -1,0 +1,52 @@
+{{- /*
+Renders a menu for the given menu ID.
+
+@context {page} page The current page.
+@context {string} menuID The menu ID.
+
+@example: {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+*/}}
+
+{{- $page := .page }}
+{{- $menuID := .menuID }}
+
+{{- with index site.Menus $menuID }}
+<nav class="py-8 bg-white fixed w-full top-0">
+  <ul class="flex">
+    {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
+  </ul>
+</nav>
+{{- end }}
+
+{{- define "partials/inline/menu/walk.html" }}
+  {{- $page := .page }}
+  {{- range .menuEntries }}
+    {{- $attrs := dict "href" .URL }}
+    {{- if $page.IsMenuCurrent .Menu . }}
+      {{- $attrs = merge $attrs (dict "class" "active" "aria-current" "page") }}
+    {{- else if $page.HasMenuCurrent .Menu .}}
+      {{- $attrs = merge $attrs (dict "class" "ancestor" "aria-current" "true") }}
+    {{- end }}
+    {{- $name := .Name }}
+    {{- with .Identifier }}
+      {{- with T . }}
+        {{- $name = . }}
+      {{- end }}
+    {{- end }}
+    <li class="px-6 hover:bg-slate-200 rounded-md list-none">
+      <a
+        {{- range $k, $v := $attrs }}
+          {{- with $v }}
+            {{- printf " %s=%q" $k $v | safeHTMLAttr }}
+          {{- end }}
+        {{- end -}}
+        class="font-bold text-slate-800 no-underline"
+      >{{ $name }}</a>
+      {{- with .Children }}
+        <ul>
+          {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
+        </ul>
+      {{- end }}
+    </li>
+  {{- end }}
+{{- end }}
