@@ -1,6 +1,6 @@
 {{ define "main" }}
 <div class="flex justify-center">
-  <div class="{{ .Params.PageType }} pt-24">
+  <div class="{{ .Params.PageType | default "page-article" }} pt-24">
   {{ .Content }}
   <!--
   {{ range site.RegularPages }}
