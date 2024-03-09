@@ -1,0 +1,23 @@
+{{ define "main" }}
+<div class="flex justify-center">
+  <div class="{{ .Params.PageType }} pt-24">
+  <div>
+    {{ .Content }}
+  </div>
+  <div class="flex flex-wrap gap-4">
+  {{ range .Pages }}
+    <div class="bg-white rounded-md max-w-96 overflow-hidden min-h-24 text-center hover:bg-sky-100">
+      <a class="text-gray-700" href="{{ .RelPermalink }}">
+        <div>
+          <img src="{{ .Params.Image }}" />
+        </div>
+        <div class="px-4">
+            <span>{{ .LinkTitle }}</span>
+            <!--<p class="font-normal text-gray-700 dark:text-gray-400">{{ .Summary }}</p>-->
+        </div>
+      </a>
+    </div>
+  {{ end }}
+  </div>
+</div>
+{{ end }}
