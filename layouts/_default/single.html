@@ -1,7 +1,6 @@
 {{ define "main" }}
 <div class="flex justify-center">
   <div class="{{ .Params.PageType }} pt-24">
-    {{ partial "breadcrumb.html" . }}
     <h1 class="text-center">{{ .Title }}</h1>
 
     {{ if .Date }}
