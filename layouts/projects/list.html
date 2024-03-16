@@ -1,11 +1,12 @@
 {{ define "main" }}
 <div class="flex justify-center">
-  <div class="{{ .Params.PageType }} pt-24">
+  <div class="{{ .Params.PageType }}">
   <div>
     {{ .Content }}
   </div>
   <div class="flex flex-wrap gap-4">
   {{ range .Pages }}
+    {{ if ne .Params.ListItem false }}
     <div class="bg-white rounded-md max-w-96 overflow-hidden min-h-24 text-center hover:bg-sky-100">
       <a class="text-gray-700" href="{{ .RelPermalink }}">
         <div>
@@ -17,6 +18,7 @@
         </div>
       </a>
     </div>
+    {{ end }}
   {{ end }}
   </div>
 </div>
