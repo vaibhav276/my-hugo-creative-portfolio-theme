@@ -13,6 +13,16 @@
   @apply w-full;
 }
 
+.headshot {
+  @apply rounded-full;
+  @apply overflow-hidden;
+  @apply w-40;
+  border: 4px solid #CAF4FF;
+}
+
+.headshot > img {
+}
+
 @layer base {
   html {
       font-family: "Oswald", sans-serif;
@@ -60,14 +70,17 @@
   }
 
   p {
-    @apply pb-2;
+    @apply pb-4;
   }
 
   ul {
     @apply list-disc;
+    @apply pl-8;
   }
 
   ol {
     @apply list-decimal;
+    @apply pl-8;
   }
+
 }
