@@ -4,17 +4,19 @@
   <div>
     {{ .Content }}
   </div>
-  <div class="flex flex-wrap gap-4">
+  <div class="flex flex-col gap-12 mt-4">
   {{ range .Pages }}
     {{ if ne .Params.ListItem false }}
-    <div class="bg-white rounded-md max-w-96 overflow-hidden min-h-24 text-center hover:bg-sky-100">
+    <div class="rounded-lg overflow-hidden hover:shadow-lg">
       <a class="text-gray-700" href="{{ .RelPermalink }}">
-        <div>
-          <img src="{{ .Params.Image }}" />
-        </div>
-        <div class="px-4">
-            <span>{{ .LinkTitle }}</span>
-            <!--<p class="font-normal text-gray-700 dark:text-gray-400">{{ .Summary }}</p>-->
+        <div class="flex flex-row gap-4">
+          <div class="w-96">
+            <img src="{{ .Params.Image }}" />
+          </div>
+          <div class="w-3/4">
+            <div class="text-gray-700 text-2xl font-bold mb-4">{{ .LinkTitle }}</div>
+            <div class="font-normal text-gray-700 dark:text-gray-200 pr-4">{{ .Summary }}...</div>
+          </div>
         </div>
       </a>
     </div>
